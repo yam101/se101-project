@@ -14,7 +14,7 @@ function Navbar() {
             </ul>
             <ul className='reglinks'>
                 <li>
-                    <Link to='/login' className='navlink'>Sign Up</Link>
+                    <Link to='/signup' className='navlink'>Sign Up</Link>
                 </li>
                 <li>
                     <Link to='/login' className='navlink'>Login</Link>

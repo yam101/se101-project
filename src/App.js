@@ -7,6 +7,7 @@ import ButtonAppBar from './Navbar_2';
 import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import SignUp from './SignUp';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/login' element={<Loginpage />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path = '/signup' element = {<SignUp />}/>
       </Routes>
     </div>
   );
