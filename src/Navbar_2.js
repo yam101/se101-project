@@ -14,9 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
 
-
-const pages = ['Profile'];
-const settings = ['Profile', 'Logout'];
+const pages = [{ name: 'Dashboard', link: "" }];
+const settings = [{ name: 'Profile', link: "profile" }, { name: 'Sign up', link: "signup" }, { name: 'Login', link: "login" }];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -87,12 +86,11 @@ function ResponsiveAppBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page.name}</Typography>
                                     <Link
                                         style={{ textDecoration: "none", color: "white" }}
-                                        to={`/${page}`}>
-                                        {page}
+                                        to={`/${page.link}`}>
                                     </Link>
 
                                 </MenuItem>
@@ -121,11 +119,11 @@ function ResponsiveAppBar() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
-                                key={page}
+                                key={page.name}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>{page}</Link>
+                                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page.link}`}>{page.name}</Link>
                             </Button>
                         ))}
                     </Box>
@@ -153,9 +151,12 @@ function ResponsiveAppBar() {
                             onClose={handleCloseUserMenu}
                         >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
+                                <Link style={{ textDecoration: "none", color: "black" }} to={`/${setting.link}`}>
+                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">{setting.name}
+                                        </Typography>
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
