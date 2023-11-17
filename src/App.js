@@ -2,7 +2,7 @@ import ScrollTop from './ScrollTop';
 import Homepage from './Homepage';
 import Loginpage from './Loginpage';
 import Profile from './Profile';
-import Navbar from './Navbar';
+import ButtonAppBar from './Navbar_2';
 import './App.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
