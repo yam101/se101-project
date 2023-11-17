@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Github from './Github';
 import { Avatar } from '@mui/material';
 
 function Copyright() {
@@ -109,6 +110,7 @@ export default function Album() {
               </Typography>
             </Stack>
           </Stack>
+          <Github/>
           {/* <Container maxWidth="sm">
             <Typography
               component="h1"
