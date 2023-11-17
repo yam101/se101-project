@@ -46,13 +46,9 @@ code {
 
 .navbar .navlink{
   text-decoration: none;
-  font-weight: bold;
-  color: black;
+  color: white;
 }
 
-.navbar .navlink:hover {
-  color: blue;
-}
 
 .spacer{
   height: 3rem;
