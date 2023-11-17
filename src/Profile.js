@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Github from './Github';
 import { Avatar } from '@mui/material';
 
 function Copyright() {
@@ -59,7 +60,7 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
-      width: 120, 
+      width: 120,
       height: 120,
       fontSize: 40,
 
@@ -81,7 +82,7 @@ export default function Album() {
             pb: 6,
           }}
         >
-          <Stack 
+          <Stack
             direction="row"
             spacing={4}
             justifyContent="center"
@@ -90,9 +91,9 @@ export default function Album() {
             <Stack
               direction="column"
               justifyContent="center"
-              align = "left"
+              align="left"
             >
-              <Typography 
+              <Typography
                 component="h4"
                 variant="h4"
                 fontWeight="bold"
@@ -100,7 +101,7 @@ export default function Album() {
               >
                 Jed Watson
               </Typography>
-              <Typography 
+              <Typography
                 component="h4"
                 variant="h4"
                 color="text.primary"
