@@ -1,24 +1,7 @@
-// // import {ReactFragment} from 'react';
-
-// function Profile(props) {
-//     return(
-//         // <ReactFragment>
-//         //     <h1>Welcome {props.name}</h1>
-//         //     <h2>Your attendence</h2>
-            
-//         // </ReactFragment>
-//         <h1>The profile page</h1>
-
-//     );
-// };
-
-// export default Profile;
-
-// //props: name
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+// import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
+// import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -27,11 +10,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+// import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Avatar } from '@mui/material';
 
 function Copyright() {
   return (
@@ -51,18 +35,43 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+function stringToColor(string) {
+  let hash = 0;
+  let i;
+
+  /* eslint-disable no-bitwise */
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = '#';
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.slice(-2);
+  }
+  /* eslint-enable no-bitwise */
+
+  return color;
+}
+
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+      width: 120, 
+      height: 120,
+      fontSize: 40,
+
+    },
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+  };
+}
+
 export default function Album() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
-      {/* <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <main>
         {/* Hero unit */}
         <Box
@@ -72,7 +81,35 @@ export default function Album() {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Stack 
+            direction="row"
+            spacing={4}
+            justifyContent="center"
+          >
+            <Avatar {...stringAvatar('Jed Watson')} />
+            <Stack
+              direction="column"
+              justifyContent="center"
+              align = "left"
+            >
+              <Typography 
+                component="h4"
+                variant="h4"
+                fontWeight="bold"
+                color="text.primary"
+              >
+                Jed Watson
+              </Typography>
+              <Typography 
+                component="h4"
+                variant="h4"
+                color="text.primary"
+              >
+                Software Engineering
+              </Typography>
+            </Stack>
+          </Stack>
+          {/* <Container maxWidth="sm">
             <Typography
               component="h1"
               variant="h2"
@@ -96,7 +133,7 @@ export default function Album() {
               <Button variant="contained">Main call to action</Button>
               <Button variant="outlined">Secondary action</Button>
             </Stack>
-          </Container>
+          </Container> */}
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
