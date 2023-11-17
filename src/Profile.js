@@ -60,7 +60,7 @@ function stringAvatar(name) {
   return {
     sx: {
       bgcolor: stringToColor(name),
-      width: 120, 
+      width: 120,
       height: 120,
       fontSize: 40,
 
@@ -82,7 +82,7 @@ export default function Album() {
             pb: 6,
           }}
         >
-          <Stack 
+          <Stack
             direction="row"
             spacing={4}
             justifyContent="center"
@@ -91,9 +91,9 @@ export default function Album() {
             <Stack
               direction="column"
               justifyContent="center"
-              align = "left"
+              align="left"
             >
-              <Typography 
+              <Typography
                 component="h4"
                 variant="h4"
                 fontWeight="bold"
@@ -101,7 +101,7 @@ export default function Album() {
               >
                 Jed Watson
               </Typography>
-              <Typography 
+              <Typography
                 component="h4"
                 variant="h4"
                 color="text.primary"
@@ -110,7 +110,7 @@ export default function Album() {
               </Typography>
             </Stack>
           </Stack>
-          <Github/>
+          <Github />
           {/* <Container maxWidth="sm">
             <Typography
               component="h1"
