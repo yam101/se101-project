@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
 
-const pages = [{ name: 'Dashboard', link: "" }];
+const pages = [{ name: 'Dashboard', link: "home" }];
 const settings = [{ name: 'Profile', link: "profile" }, { name: 'Sign up', link: "signup" }, { name: 'Login', link: "login" }];
 
 function ResponsiveAppBar() {
@@ -37,14 +37,14 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: '#2E3B55' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
