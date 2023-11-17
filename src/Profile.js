@@ -110,7 +110,7 @@ export default function Album() {
               </Typography>
             </Stack>
           </Stack>
-          <Github/>
+          <Github />
           {/* <Container maxWidth="sm">
             <Typography
               component="h1"
