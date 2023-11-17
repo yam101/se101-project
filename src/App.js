@@ -9,17 +9,40 @@ import { Routes, Route } from 'react-router-dom';
 import SignUp from './SignUp';
 
 function App() {
-  return (
-    <div className="App">
-      <ButtonAppBar />
-      <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
-      <div className='spacer'></div>
+  const [loginState, setLoginState] = React.useState(false);
+  const handleLogin = () => {
+    if (!loginState)
+    setLoginState(true);
+  }
+  const handleLogout = () => {
+    if(loginState) 
+    setLoginState(false);
+  }
+
+  let AvailableRoutes;
+  if (loginState) {
+    AvailableRoutes = () => (
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/login' element={<Loginpage />} />
         <Route path='/profile' element={<Profile />} />
+      </Routes>
+    );
+  } else {
+    AvailableRoutes = () => (
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
         <Route path='/signup' element={<SignUp />} />
       </Routes>
+    );
+  }
+
+  return (
+    <div className="App">
+      <Navbar />
+      <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
+      <div className='spacer'></div>
+      <AvailableRoutes/>
     </div>
   );
 }
