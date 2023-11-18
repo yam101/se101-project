@@ -17,8 +17,10 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Github from './Github';
 import { Avatar } from '@mui/material';
+import UserContext from './UserContext';
 
 function Copyright() {
+
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
@@ -57,6 +59,7 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
+  
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -70,6 +73,9 @@ function stringAvatar(name) {
 }
 
 export default function Album() {
+
+  const user = React.useContext(UserContext).value;
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
@@ -87,7 +93,10 @@ export default function Album() {
             spacing={4}
             justifyContent="center"
           >
-            <Avatar {...stringAvatar('Jed Watson')} />
+            {user===null ? 
+            <Avatar {...stringAvatar('Jed Watson')} /> : 
+            <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)} />}
+            
             <Stack
               direction="column"
               justifyContent="center"
@@ -99,7 +108,7 @@ export default function Album() {
                 fontWeight="bold"
                 color="text.primary"
               >
-                Jed Watson
+                {user===null ? 'Jed Watson' : `${user.firstName} ${user.lastName}`}
               </Typography>
               <Typography
                 component="h4"

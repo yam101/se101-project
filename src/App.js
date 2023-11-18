@@ -4,13 +4,18 @@ import Loginpage from './Loginpage';
 import Profile from './Profile';
 import ResponsiveAppBar from './Navbar_2';
 import './App.css';
-import React from 'react';
+import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './SignUp';
 import Landing from './Landing';
 
+import UserContext from './UserContext.js';
+
+
 function App() {
   const [loginState, setLoginState] = React.useState(false);
+  const [user, setUser] = React.useState(null);
+
   const handleLogin = () => {
     if (!loginState)
       setLoginState(true);
@@ -42,12 +47,14 @@ function App() {
   }
 
   return (
+    <UserContext.Provider value={{value: user, function: setUser}}>
     <div className="App">
       <ResponsiveAppBar loginState={loginState} logout={handleLogout}/>
       <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
       <div className='spacer'></div>
       <AvailableRoutes />
     </div>
+    </UserContext.Provider>
   );
 }
 
