@@ -32,7 +32,8 @@ function App() {
   } else {
     AvailableRoutes = () => (
       <Routes>
-        <Route path='/' element={<Homepage />} />
+        <Route path='/' element={<Landing />} />
+        <Route path='/home' element={<Homepage />} />
         <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<Profile />} />

@@ -38,14 +38,14 @@ function ResponsiveAppBar(props) {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: '#2E3B55' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
