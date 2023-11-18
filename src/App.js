@@ -16,13 +16,14 @@ function App() {
   const [loginState, setLoginState] = React.useState(false);
   const [user, setUser] = React.useState(null);
 
-  const handleLogin = () => {
+  const handleLogin = (newUser) => {
     if (!loginState)
       setLoginState(true);
   }
   const handleLogout = () => {
     if (loginState)
       setLoginState(false);
+      setUser(null);
   }
 
   let AvailableRoutes;
