@@ -36,9 +36,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn(props) {
   const setUser = React.useContext(UserContext).function;
-  const handleSetUser = (value) => {
-    setUser(value);
-  }
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -60,7 +58,7 @@ export default function SignIn(props) {
     const result = await response.json();
 
     if (result.status === 'successful') {
-      handleSetUser(result.user);
+      setUser(result.user);
       navigate("/profile");
       props.login();
     } else {
@@ -70,7 +68,7 @@ export default function SignIn(props) {
         //prompt user to sign up
       }
       //TEMP---------------
-      handleSetUser(result.user);
+      setUser(result.user);
       navigate("/profile");
       props.login();
       //-------------------

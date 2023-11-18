@@ -16,13 +16,14 @@ function App() {
   const [loginState, setLoginState] = React.useState(false);
   const [user, setUser] = React.useState(null);
 
-  const handleLogin = () => {
+  const handleLogin = (newUser) => {
     if (!loginState)
       setLoginState(true);
   }
   const handleLogout = () => {
     if (loginState)
       setLoginState(false);
+      setUser(null);
   }
 
   let AvailableRoutes;
@@ -40,7 +41,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Homepage />} />
         <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp loginState={loginState} login={handleLogin}/>} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
     );

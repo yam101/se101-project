@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +14,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import UserContext from './UserContext.js';
+
 
 function Copyright(props) {
   return (
@@ -30,14 +35,36 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
+export default function SignUp(props) {
+  const setUser = React.useContext(UserContext).function;
+  const navigate = useNavigate();
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    const options = {
+      mode: 'cors',
+      method: 'POST',
+      headers: {'Content-Type': 'application/JSON'},
+      body: JSON.stringify({
+        email: data.get('email'),
+        password: data.get('password'),
+        firstName: data.get('firstName'),
+        lastName: data.get('lastName')
+      })
+    }
+    const response = await fetch('http://localhost:3600/signup', options);
+    const result = await response.json();
+    console.log(result);
+
+    if (result.status === 'successful') {
+      setUser(result.user);
+      navigate("/profile");
+      props.login();
+    } else {
+      //say user already exists
+    }
   };
 
   return (

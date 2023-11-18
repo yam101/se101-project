@@ -14,7 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
 
-const pages = [{ name: 'Dashboard', link: "" }];
+const pages = [{ name: 'Dashboard', link: "" },
+
+                //v temp access for development
+                { name: 'Profile2', link: "profile" }
+];
 const signinPages = [{ name: 'Sign up', link: "signup" }, { name: 'Login', link: "login" }]
 const settings = [{ name: 'Profile', link: "profile" }];
 
