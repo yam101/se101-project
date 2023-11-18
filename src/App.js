@@ -40,7 +40,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Homepage />} />
         <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp loginState={loginState} login={handleLogin}/>} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
     );
