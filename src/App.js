@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <ResponsiveAppBar />
+      <ResponsiveAppBar loginState={loginState} logout={handleLogout}/>
       <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
       <div className='spacer'></div>
       <AvailableRoutes />
