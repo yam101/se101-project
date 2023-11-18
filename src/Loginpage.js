@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import UserContext from './UserContext.js';
 
 function Copyright(props) {
   return (
@@ -34,15 +35,15 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn(props) {
+  const setUser = React.useContext(UserContext).function;
+  const handleSetUser = (value) => {
+    setUser(value);
+  }
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
 
     const options = {
       mode: 'cors',
@@ -55,17 +56,24 @@ export default function SignIn(props) {
         password: data.get('password'),
       }),
     }
-
     const response = await fetch('http://localhost:3600/login', options);
     const result = await response.json();
 
-    console.log(result.status);
-
-    navigate("/profile");
-    props.login();
-    if (result.status == 'successful') {
+    if (result.status === 'successful') {
+      handleSetUser(result.user);
+      navigate("/profile");
+      props.login();
     } else {
-
+      if (result.error==='password incorrect') {
+        //notify user
+      } else if (result.error==='no user') {
+        //prompt user to sign up
+      }
+      //TEMP---------------
+      handleSetUser(result.user);
+      navigate("/profile");
+      props.login();
+      //-------------------
     }
   };
 
