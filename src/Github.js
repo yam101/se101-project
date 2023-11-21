@@ -19,7 +19,13 @@ function Github(){
             }
             return `color-gitlab-${value.count}`;
           }}
-          
+          tooltipDataAttrs={(value) => {
+            return {
+              "data-tip": `${
+                value.count
+              } `
+            };
+          }}
     />
     )
 }
