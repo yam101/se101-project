@@ -5,7 +5,8 @@ import Profile from './Profile';
 import ResponsiveAppBar from './Navbar_2';
 import './App.css';
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
 import SignUp from './SignUp';
 import Landing from './Landing';
 
@@ -13,6 +14,8 @@ import UserContext from './UserContext.js';
 
 
 function App() {
+  const location = useLocation();
+  console.log(location.pathname);
   const [loginState, setLoginState] = React.useState(false);
   const [user, setUser] = React.useState(null);
 
@@ -51,7 +54,7 @@ function App() {
   return (
     <UserContext.Provider value={{ value: user, function: setUser }}>
       <div className="App">
-        <ResponsiveAppBar loginState={loginState} logout={handleLogout} />
+        <ResponsiveAppBar loginState={loginState} logout={handleLogout} clear={location.pathname==='/'? true : false}/>
         <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
         <AvailableRoutes />
       </div>

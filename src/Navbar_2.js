@@ -42,7 +42,7 @@ function ResponsiveAppBar(props) {
     };
 
     return (
-        <AppBar position="fixed" style={{ background: 'rgba(0,0,0,0)', boxShadow: 'none' }}>
+        <AppBar position="fixed" style={{ background: props.clear ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.7)', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     
