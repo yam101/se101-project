@@ -58,19 +58,21 @@ export default function SignIn(props) {
     const result = await response.json();
 
     if (result.status === 'successful') {
-      setUser(result.user);
+      //setUser();
+      props.login(result.user);
       navigate("/profile");
-      props.login();
     } else {
       if (result.error==='password incorrect') {
         //notify user
       } else if (result.error==='no user') {
         //prompt user to sign up
       }
+
+      
       //TEMP---------------
-      setUser(result.user);
+      props.login(null);
+      //setUser(result.user);
       navigate("/profile");
-      props.login();
       //-------------------
     }
   };

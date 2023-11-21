@@ -45,11 +45,15 @@ function ResponsiveAppBar(props) {
         <AppBar position="static" style={{ background: '#2E3B55' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography
+                    
+                    <Link
+                        style={{ textDecoration: "none", color: "white" }}
+                        to={''}>
+                            <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        //href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -60,6 +64,7 @@ function ResponsiveAppBar(props) {
                     >
                         Wattendance
                     </Typography>
+                    </Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton

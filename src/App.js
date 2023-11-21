@@ -19,6 +19,7 @@ function App() {
   const handleLogin = (newUser) => {
     if (!loginState)
       setLoginState(true);
+      setUser(newUser);
   }
   const handleLogout = () => {
     if (loginState)
