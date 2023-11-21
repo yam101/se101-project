@@ -24,7 +24,7 @@ function App() {
   const handleLogout = () => {
     if (loginState)
       setLoginState(false);
-      setUser(null);
+    setUser(null);
   }
 
   let AvailableRoutes;
@@ -42,20 +42,19 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Homepage />} />
         <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
-        <Route path='/signup' element={<SignUp loginState={loginState} login={handleLogin}/>} />
+        <Route path='/signup' element={<SignUp loginState={loginState} login={handleLogin} />} />
         <Route path='/profile' element={<Profile />} />
       </Routes>
     );
   }
 
   return (
-    <UserContext.Provider value={{value: user, function: setUser}}>
-    <div className="App">
-      <ResponsiveAppBar loginState={loginState} logout={handleLogout}/>
-      <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
-      <div className='spacer'></div>
-      <AvailableRoutes />
-    </div>
+    <UserContext.Provider value={{ value: user, function: setUser }}>
+      <div className="App">
+        <ResponsiveAppBar loginState={loginState} logout={handleLogout} />
+        <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
+        <AvailableRoutes />
+      </div>
     </UserContext.Provider>
   );
 }
