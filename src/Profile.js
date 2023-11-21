@@ -18,6 +18,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Github from './Github';
 import { Avatar } from '@mui/material';
 import UserContext from './UserContext';
+import ProfileClassesTable from './ProfileClassesTable';
 
 function Copyright() {
 
@@ -86,12 +87,16 @@ export default function Album() {
             bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
+            m: 7,
           }}
         >
           <Stack
             direction="row"
             spacing={4}
             justifyContent="center"
+            sx={{
+              m: 5,
+            }}
           >
             {user===null ? 
             <Avatar {...stringAvatar('Jed Watson')} /> : 
@@ -147,6 +152,7 @@ export default function Album() {
           </Container> */}
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
+          <ProfileClassesTable />
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
