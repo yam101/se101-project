@@ -42,7 +42,7 @@ function ResponsiveAppBar(props) {
     };
 
     return (
-        <AppBar position="static" style={{ background: '#2E3B55' }}>
+        <AppBar position="fixed" style={{ background: 'rgba(0,0,0,0)', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -94,7 +94,7 @@ function ResponsiveAppBar(props) {
                                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page.name}</Typography>
                                     <Link
-                                        style={{ textDecoration: "none", color: "white" }}
+                                        style={{ textDecoration: "none", color: "black" }}
                                         to={`/${page.link}`}>
                                     </Link>
 
@@ -102,7 +102,6 @@ function ResponsiveAppBar(props) {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -119,16 +118,16 @@ function ResponsiveAppBar(props) {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Wattendance
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                                 key={page.name}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, color: 'black', display: 'block' }}
                             >
-                                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page.link}`}>{page.name}</Link>
+                                <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>{page.name}</Link>
                             </Button>
                         ))}
                     </Box>
@@ -182,9 +181,9 @@ function ResponsiveAppBar(props) {
                                     <Button
                                         key={page.name}
                                         onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        sx={{ my: 2, color: 'black', display: 'block' }}
                                     >
-                                        <Link style={{ textDecoration: "none", color: "white" }} to={`/${page.link}`}>{page.name}</Link>
+                                        <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>{page.name}</Link>
                                     </Button>
                                 ))}
                             </Box>
