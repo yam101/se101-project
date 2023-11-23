@@ -2,7 +2,7 @@ import ScrollTop from './ScrollTop';
 import Homepage from './Homepage';
 import Loginpage from './Loginpage';
 import Profile from './Profile';
-import ResponsiveAppBar from './Navbar_2';
+import Navbar from './Navbar';
 import './App.css';
 import * as React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -22,7 +22,7 @@ function App() {
   const handleLogin = (newUser) => {
     if (!loginState)
       setLoginState(true);
-      setUser(newUser);
+    setUser(newUser);
   }
   const handleLogout = () => {
     if (loginState)
@@ -54,7 +54,7 @@ function App() {
   return (
     <UserContext.Provider value={{ value: user, function: setUser }}>
       <div className="App">
-        <ResponsiveAppBar loginState={loginState} logout={handleLogout} clear={location.pathname==='/'? true : false}/>
+        <Navbar loginState={loginState} logout={handleLogout} clear={location.pathname === '/' ? true : false} />
         <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
         <AvailableRoutes />
       </div>
