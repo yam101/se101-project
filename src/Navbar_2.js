@@ -45,25 +45,25 @@ function ResponsiveAppBar(props) {
         <AppBar position="fixed" style={{ background: props.clear ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.7)', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    
+
                     <Link
-                        style={{ textDecoration: "none", color: "white" }}
+                        style={{ textDecoration: "none", color: "black" }}
                         to={''}>
-                            <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        //href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontWeight: 700,
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Wattendance
-                    </Typography>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            //href="/"
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'none', md: 'flex' },
+                                fontWeight: 700,
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Wattendance
+                        </Typography>
                     </Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -127,13 +127,14 @@ function ResponsiveAppBar(props) {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
-                                key={page.name}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'black', display: 'block' }}
-                            >
-                                <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>{page.name}</Link>
-                            </Button>
+                            <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>
+                                <Button
+                                    key={page.name}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                >{page.name}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
 
@@ -183,18 +184,18 @@ function ResponsiveAppBar(props) {
                             </> :
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 {signinPages.map((page) => (
-                                    <Button
-                                        key={page.name}
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'black', display: 'block' }}
-                                    >
-                                        <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>{page.name}</Link>
-                                    </Button>
+                                    <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>
+                                        <Button
+                                            key={page.name}
+                                            onClick={handleCloseNavMenu}
+                                            sx={{ my: 2, color: 'black', display: 'block' }}
+                                        >
+                                            {page.name}
+                                        </Button>
+                                    </Link>
                                 ))}
                             </Box>
                         }
-
-
                     </Box>
                 </Toolbar>
             </Container>
