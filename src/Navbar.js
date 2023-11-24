@@ -14,10 +14,15 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
 
-const pages = [{ name: 'Dashboard', link: "home" }];
-const settings = [{ name: 'Profile', link: "profile" }, { name: 'Sign up', link: "signup" }, { name: 'Login', link: "login" }];
+const pages = [{ name: 'Dashboard', link: "home" },
 
-function ResponsiveAppBar() {
+//v temp access for development
+{ name: 'Profile2', link: "profile" }
+];
+const signinPages = [{ name: 'Sign up', link: "signup" }, { name: 'Login', link: "login" }]
+const settings = [{ name: 'Profile', link: "profile" }];
+
+function ResponsiveAppBar(props) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,24 +42,29 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static" style={{ background: '#1e2333' }}>
+        <AppBar position="fixed" style={{ background: props.clear ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.7)', boxShadow: 'none' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href=""
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontWeight: 700,
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Wattendance
-                    </Typography>
+
+                    <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to={''}>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            //href="/"
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'none', md: 'flex' },
+                                fontWeight: 700,
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Wattendance
+                        </Typography>
+                    </Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -89,7 +99,7 @@ function ResponsiveAppBar() {
                                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page.name}</Typography>
                                     <Link
-                                        style={{ textDecoration: "none", color: "white" }}
+                                        style={{ textDecoration: "none", color: "black" }}
                                         to={`/${page.link}`}>
                                     </Link>
 
@@ -97,7 +107,6 @@ function ResponsiveAppBar() {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -114,51 +123,79 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Wattendance
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
-                                key={page.name}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page.link}`}>{page.name}</Link>
-                            </Button>
+                            <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>
+                                <Button
+                                    key={page.name}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                >{page.name}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <Link style={{ textDecoration: "none", color: "black" }} to={`/${setting.link}`}>
-                                    <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting.name}
-                                        </Typography>
-                                    </MenuItem>
-                                </Link>
-                            ))}
-                        </Menu>
+                        {props.loginState ?
+                            <>
+
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting) => (
+                                        <Link key={setting.name} style={{ textDecoration: "none", color: "black" }} to={`/${setting.link}`}>
+                                            <MenuItem onClick={handleCloseUserMenu}>
+                                                <Typography textAlign="center">{setting.name}
+                                                </Typography>
+                                            </MenuItem>
+                                        </Link>
+                                    ))}
+                                    <Link style={{ textDecoration: "none", color: "black" }} to="/">
+                                        <MenuItem onClick={() => {
+                                            handleCloseUserMenu();
+                                            props.logout();
+                                        }}>
+                                            <Typography textAlign="center">Log Out
+                                            </Typography>
+                                        </MenuItem>
+                                    </Link>
+                                </Menu>
+                            </> :
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                {signinPages.map((page) => (
+                                    <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.link}`}>
+                                        <Button
+                                            key={page.name}
+                                            onClick={handleCloseNavMenu}
+                                            sx={{ my: 2, color: 'black', display: 'block' }}
+                                        >
+                                            {page.name}
+                                        </Button>
+                                    </Link>
+                                ))}
+                            </Box>
+                        }
                     </Box>
                 </Toolbar>
             </Container>
@@ -166,3 +203,4 @@ function ResponsiveAppBar() {
     );
 }
 export default ResponsiveAppBar;
+
