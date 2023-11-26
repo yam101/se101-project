@@ -54,7 +54,7 @@ function App() {
   return (
     <UserContext.Provider value={{ value: user, function: setUser }}>
       <div className="App">
-        <Navbar loginState={loginState} logout={handleLogout} clear={location.pathname === '/' ? true : false} />
+        <Navbar loginState={loginState} logout={handleLogout} clear={location.pathname === '/' || location.pathname === '/signup' || location.pathname === '/login' ? true : false} />
         <ScrollTop /> {/*listens for change in route; if detected, scroll to top of page; does not render any HTML*/}
         <AvailableRoutes />
       </div>
