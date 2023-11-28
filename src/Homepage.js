@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { ScatterChart } from "@mui/x-charts/ScatterChart";
 import Card from '@mui/material/Card';
+import Link from '@mui/material/Link';
 
 
 const font = "'Poppins', sans-serif";
@@ -34,40 +35,22 @@ const theme = createTheme({
     },
 });
 
+function Copyright() {
+
+    return (
+      <Typography variant="body2" color="text.secondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://mui.com/">
+          Wattendance
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+
 
 function Homepage() {
-    const [sliderValues, setSliderValues] = useState({
-        q1: 1,
-        q2: 1,
-        q3: 1,
-        q4: 1
-    });
-    const handleSliderChange = (name, value) => {
-        setSliderValues((prevValues) => ({
-            ...sliderValues,
-            [name]: value,
-        }));
-    };
-    const handleSubmit = async() => {
-        console.log(sliderValues);
-
-        const options = {
-            mode: 'cors',
-            method: 'POST',
-            headers: { 'Content-Type': 'application/JSON' },
-            body: JSON.stringify({
-                q1: sliderValues['q1'],
-                q2: sliderValues['q2'],
-                q3: sliderValues['q3'],
-                q4: sliderValues['q4'],
-                
-            })
-          }
-            const response = await fetch('http://localhost:3600/survey', options);
-            const result = await response.json();
-            console.log(result);
-    };
-
 
     return (
         <> 
@@ -105,64 +88,24 @@ function Homepage() {
             />
             </Card>
             
-
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-
-            <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
-                <Typography variant="h6" gutterBottom>
-                On a scale of 1 - 10, how often do you attend lectures for this class?
-
-                </Typography>
-            </Box>
-            <Slider name='q1' onChange={handleSliderChange}/>
-
-
-            <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
-                <Typography variant="h6" gutterBottom>
-                On a scale of 1 - 10, do you think these lectures have made a positive contribution to your academic success?
-
-                </Typography>
-            </Box>
-            <Slider name='q2' onChange={handleSliderChange}/>
-            
-            <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
-                <Typography variant="h6" gutterBottom>
-                On a scale of 1 - 10, how would you rate the overall importance of attending lectures in your academic journey?
-
-                </Typography>
-            </Box>
-
-            <Slider name='q3' onChange={handleSliderChange}/>
-
-
-            <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
-                <Typography variant="h6" gutterBottom>
-                On a scale of 1 to 10, to what extent do you believe that missing lectures has negatively impacted your academic performance?
-
-                </Typography>
-            </Box>
-            <Slider name='q4' onChange={handleSliderChange}/>
-
-            <br></br>
-            <br></br>
-            <Button variant="contained" color="primary" onClick={handleSubmit}
-            sx={{ ml: '60px', display: 'block', width: "200px" }}>Submit</Button>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
         </Stack>
+        {/* Footer */}
+        <Box sx={{ p: 6 }} component="footer">
+            <Typography variant="h6" align="center" gutterBottom>
+            Wattendance
+            </Typography>
+            <Typography
+            variant="subtitle1"
+            align="center"
+            color="text.secondary"
+            component="p"
+            >
+            Track your attendance
+            </Typography>
+            <Copyright />
+        </Box>
+        {/* End footer */}
         </ThemeProvider>
-
     </>   
     );
 

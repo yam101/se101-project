@@ -9,6 +9,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import SignUp from './SignUp';
 import Landing from './Landing';
+import Survey from './Survey'
 
 import UserContext from './UserContext.js';
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Homepage />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/survey' element={<Survey />} />
       </Routes>
     );
   } else {
@@ -45,6 +47,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Homepage />} />
+        <Route path='/survey' element={<Survey />} />
         <Route path='/login' element={<Loginpage loginState={loginState} login={handleLogin} />} />
         <Route path='/signup' element={<SignUp loginState={loginState} login={handleLogin} />} />
         <Route path='/profile' element={<Profile />} />
