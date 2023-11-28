@@ -54,7 +54,7 @@ export default function SignIn(props) {
         password: data.get('password'),
       }),
     }
-    const response = await fetch('http://localhost:3600/login', options);
+    const response = await fetch('http://18.223.107.181:3600/login', options);
     const result = await response.json();
 
     if (result.status === 'successful') {
