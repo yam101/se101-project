@@ -13,6 +13,8 @@ import NoOfSubmissions from './userCard';
 import { Avatar } from '@mui/material';
 import UserContext from './UserContext';
 import ProfileClassesTable from './ProfileClassesTable';
+import cover from "./images/background.png";
+
 
 const font = "'Poppins', sans-serif";
 
@@ -62,7 +64,6 @@ function stringToColor(string) {
 }
 
 function stringAvatar(name) {
-  
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -78,21 +79,29 @@ function stringAvatar(name) {
 export default function Album() {
 
   const user = React.useContext(UserContext).value;
-
+  const componentStyles = {
+    backgroundImage: 'url("./images/background-2.png")',
+    backgroundRepeat: 'no-repeat',
+  };
   return (
-    
+    <>
+      <div style={{
+          width: '100%', top: 'calc(0vh-100px)', height: '100%', backgroundImage: `url(${cover})`,
+          backgroundSize: 'cover', backgroundRepeat: 'no-repeat', position: 'fixed',
+          zIndex: '-1'
+      }}>
+      </div >
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <main> 
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
             horizontalAlign: 'middle',
             // verticalAlignalign: 'middle',
-            marginTop: 10,
+            marginTop: 8,
             marginLeft: 5,
             marginRight: 5,
             marginBottom: 0,
@@ -143,7 +152,7 @@ export default function Album() {
         </Container>
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Wattendance
         </Typography>
@@ -159,5 +168,6 @@ export default function Album() {
       </Box>
       {/* End footer */}
     </ThemeProvider>
+    </>
   );
 }

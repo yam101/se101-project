@@ -12,7 +12,7 @@ export default function NoOfSubmissions() {
             {/* 1781 submissions in the last year */}
           </div>
         </div>
-        <div style={{ padding: "30px" }}>
+        <div style={{ padding: "50px" }}>
           <Heatmap />
         </div>
       </Card>
