@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { ScatterChart } from "@mui/x-charts/ScatterChart";
+import Card from '@mui/material/Card';
 
 
 const font = "'Poppins', sans-serif";
@@ -86,21 +87,14 @@ function Homepage() {
                 </Typography>
             </Box>
 
-            <br></br>
             
-
-            <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
-                <Typography variant="h3" gutterBottom>
-                    graph
-                </Typography>
-            </Box>
-
+        
             <br></br>
 
 
     
 
+            <Card>
             <ScatterChart
             series={[
             { type: 'scatter', label: 'Var A', data: data.slice(0, 25) },
@@ -109,14 +103,8 @@ function Homepage() {
             width={800}
             height={600}
             />
-
-
-
-
-
-
-
-
+            </Card>
+            
 
             <br></br>
             <br></br>
