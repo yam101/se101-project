@@ -33,7 +33,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Wattendance
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -155,7 +155,7 @@ export default function Album() {
         >
           Track your attendance
         </Typography>
-        {/* <Copyright /> */}
+        <Copyright />
       </Box>
       {/* End footer */}
     </ThemeProvider>
