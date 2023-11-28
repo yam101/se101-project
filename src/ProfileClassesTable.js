@@ -38,6 +38,21 @@ const columns = [
     return {course, code, attendance};
   }
   
+  const getCourse= async(courseID)=>{
+    const options = {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'courseID': courseID
+      }),
+    }
+    const response = await fetch('http://18.223.107.181:3600/login', options);
+    const result = await response.json();
+  }
+  
   const rows = [
     // Unsure how data is going to be imported: 
     // make them as a list, the createData function is going to be unnecessary.
@@ -48,6 +63,10 @@ const columns = [
     // I'm confused ahaha
   ];
 
+  for (let i = 1; i < 7; i++){
+    rows.push(getCourse(i));
+  }
+  
 function ProfileClassesTable(){
     const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

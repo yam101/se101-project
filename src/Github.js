@@ -4,6 +4,8 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { githubdata} from "./GithubData";
 
+import UserContext from './UserContext.js';
+
 import "./Github.css";
 
 const today = new Date();
@@ -11,6 +13,10 @@ const today = new Date();
 const heatmap = githubdata.reverse();
 
 function Heatmap() {
+  const setUser = React.useContext(UserContext).function;
+
+
+
   const data = getRange(365).map((index) => {
     return {
       date: shiftDate(today, -index),
