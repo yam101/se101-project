@@ -29,18 +29,19 @@ export default function Types() {
             }}>
             </div >
             <ThemeProvider theme={theme}>
-                <Stack direction="column" justifyContent="center" align="left" sx={{ pt: "20%", ml: "50px", zIndex: '2', fontFamily: 'Poppins' }}>
-
-                    <Typography variant="h3" gutterBottom >
-                        Wattendance
+                <Stack>
+                    <Stack direction="column" justifyContent="center" align="left" sx={{ pt: "20%", ml: "50px", zIndex: '2', fontFamily: 'Poppins' }}>
+                    <Typography justifyContent="center" variant="h3" gutterBottom >
+                        Welcome to <br /> Wattendance
                     </Typography>
 
                     <Link style={{ textDecoration: "none" }} to={`/signup`}>
                         <Button variant="contained" color="primary" sx={{ ml: '60px', display: 'block', width: "200px" }}>Sign Up</Button>
                     </Link>
 
-
+                    </Stack>
                 </Stack>
+                
             </ThemeProvider>
 
 

@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from "react-router-dom";
+import cover from "./images/background.png";
 
 const pages = [{ name: 'Dashboard', link: "home" },
 
@@ -42,7 +43,8 @@ function ResponsiveAppBar(props) {
     };
 
     return (
-        <AppBar position="fixed" style={{ background: props.clear ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.7)', boxShadow: 'none' }}>
+        <AppBar position="fixed" style={{ background: props.clear ? 'rgba(0,0,0,0)' : `url(${cover})`, boxShadow: 'none' }}> 
+        {/* 'rgba(255,255,255,0.7)' */}
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
 
