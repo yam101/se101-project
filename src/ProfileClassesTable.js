@@ -8,56 +8,65 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
-// unfinished table!!!
 const columns = [
     { id: 'course', label: 'Course', minWidth: 170 },
     { id: 'code', label: 'Course Code', minWidth: 100 },
     {
-      id: 'population',
-      label: 'Population',
+      id: 'attendance',
+      label: 'Attendance',
       minWidth: 170,
       align: 'right',
-      format: (value) => value.toLocaleString('en-US'),
+      // format: (value) => value.toLocaleString('en-US'),
     },
-    {
-      id: 'size',
-      label: 'Size\u00a0(km\u00b2)',
-      minWidth: 170,
-      align: 'right',
-      format: (value) => value.toLocaleString('en-US'),
-    },
-    {
-      id: 'density',
-      label: 'Density',
-      minWidth: 170,
-      align: 'right',
-      format: (value) => value.toFixed(2),
-    },
+    // {
+    //   id: 'size',
+    //   label: 'Size\u00a0(km\u00b2)',
+    //   minWidth: 170,
+    //   align: 'right',
+    //   format: (value) => value.toLocaleString('en-US'),
+    // },
+    // {
+    //   id: 'density',
+    //   label: 'Density',
+    //   minWidth: 170,
+    //   align: 'right',
+    //   format: (value) => value.toFixed(2),
+    // },
   ];
   
-  function createData(course, code, population, size) {
-    const density = population / size;
-    return { course, code, population, size, density };
+  function createData(course, code, attendance) {
+    return {course, code, attendance};
+  }
+  
+  const getCourse= async(courseID)=>{
+    const options = {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'courseID': courseID
+      }),
+    }
+    const response = await fetch('http://18.223.107.181:3600/login', options);
+    const result = await response.json();
   }
   
   const rows = [
-    createData('India', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
-    // createData('Italy', 'IT', 60483973, 301340),
-    // createData('United States', 'US', 327167434, 9833520),
-    // createData('Canada', 'CA', 37602103, 9984670),
-    // createData('Australia', 'AU', 25475400, 7692024),
-    // createData('Germany', 'DE', 83019200, 357578),
-    // createData('Ireland', 'IE', 4857000, 70273),
-    // createData('Mexico', 'MX', 126577691, 1972550),
-    // createData('Japan', 'JP', 126317000, 377973),
-    // createData('France', 'FR', 67022000, 640679),
-    // createData('United Kingdom', 'GB', 67545757, 242495),
-    // createData('Russia', 'RU', 146793744, 17098246),
-    // createData('Nigeria', 'NG', 200962417, 923768),
-    // createData('Brazil', 'BR', 210147125, 8515767),
+    // Unsure how data is going to be imported: 
+    // make them as a list, the createData function is going to be unnecessary.
+    // createData('Linear Algebra', 'MATH115', 0),
+    // createData('Physics 1', 'ECE105', 0),
+    {course: 'Linear Algebra', code: 'MATH115', attendance: 0},
+    {course: 'Classical Mechanics', code: 'ECE105', attendance: 0},
+    // I'm confused ahaha
   ];
 
+  for (let i = 1; i < 7; i++){
+    rows.push(getCourse(i));
+  }
+  
 function ProfileClassesTable(){
     const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
