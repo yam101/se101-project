@@ -30,6 +30,7 @@ function App() {
     setUser(null);
   }
 
+  
   let AvailableRoutes;
   if (loginState) {
     AvailableRoutes = () => (
