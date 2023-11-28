@@ -1,13 +1,13 @@
 import * as React from 'react';
 // import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 // import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
+// import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 // import Toolbar from '@mui/material/Toolbar';
@@ -34,7 +34,7 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -88,7 +88,14 @@ export default function Album() {
             bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
-            m: 7,
+            horizontalAlign: 'middle',
+            // verticalAlignalign: 'middle',
+            marginTop: 10,
+            marginLeft: 5,
+            marginRight: 5,
+            marginBottom: 0,
+            paddingBottom: 0,
+            height: '100vh'
           }}
         >
           <Stack
@@ -96,7 +103,8 @@ export default function Album() {
             spacing={4}
             justifyContent="center"
             sx={{
-              m: 5,
+              marginBottom: 5,
+              
             }}
           >
             {user===null ? 
