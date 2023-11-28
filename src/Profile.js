@@ -22,12 +22,12 @@ const font = "'Poppins', sans-serif";
 
 const theme = createTheme({
   typography: {
-      fontFamily: font,
+    fontFamily: font,
   },
   palette: {
-      primary: {
-          main: "#000000"
-      },
+    primary: {
+      main: "#000000"
+    },
   },
 });
 
@@ -88,91 +88,91 @@ export default function Album() {
   return (
     <>
       <div style={{
-          width: '100%', top: 'calc(0vh-100px)', height: '100%', backgroundImage: `url(${cover})`,
-          backgroundSize: 'cover', backgroundRepeat: 'no-repeat', position: 'fixed',
-          zIndex: '-1'
+        width: '100%', top: 'calc(0vh-100px)', height: '100%', backgroundImage: `url(${cover})`,
+        backgroundSize: 'cover', backgroundRepeat: 'no-repeat', position: 'fixed',
+        zIndex: '-1'
       }}>
       </div >
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <main> 
-        {/* Hero unit */}
-        <Box
-          sx={{
-            pt: 16,
-            pb: 6,
-            horizontalAlign: 'middle',
-            // verticalAlignalign: 'middle',
-            marginLeft: 5,
-            marginRight: 5,
-            marginBottom: 0,
-            paddingBottom: 0,
-            // height: '100vh'
-          }}
-        >
-          <Stack
-            direction="row"
-            spacing={4}
-            justifyContent="center"
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <main>
+          {/* Hero unit */}
+          <Box
             sx={{
-              marginBottom: 5,
-              
+              pt: 16,
+              pb: 6,
+              horizontalAlign: 'middle',
+              // verticalAlignalign: 'middle',
+              marginLeft: 5,
+              marginRight: 5,
+              marginBottom: 0,
+              paddingBottom: 0,
+              // height: '100vh'
             }}
           >
-            {user===null ? 
-            <Avatar {...stringAvatar('Jed Watson')} /> : 
-            <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)} />}
-            
             <Stack
-              direction="column"
+              direction="row"
+              spacing={4}
               justifyContent="center"
-              align="left"
-              spacing = {1}
+              sx={{
+                marginBottom: 5,
+
+              }}
             >
-              <Typography
-                component="h4"
-                variant="h4"
-                fontWeight="bold"
-                color="text.primary"
+              {user === null ?
+                <Avatar {...stringAvatar('Jed Watson')} /> :
+                <Avatar {...stringAvatar(`${user.firstName} ${user.lastName}`)} />}
+
+              <Stack
+                direction="column"
+                justifyContent="center"
+                align="left"
+                spacing={1}
               >
-                {user===null ? 'Jed Watson' : `${user.firstName} ${user.lastName}`}
-              </Typography>
-              <Typography
-                component="h4"
-                variant="h4"
-                color="text.primary"
-              >
-                Software Engineering
-              </Typography>
-              <Link style={{ textDecoration: "none" }} href='/survey'>
-                  <Button variant="contained" color="primary" sx={{ display: 'block', width: "400px" }}>Complete a survey about yourself</Button>
-              </Link>
+                <Typography
+                  component="h4"
+                  variant="h4"
+                  fontWeight="bold"
+                  color="text.primary"
+                >
+                  {user === null ? 'Jed Watson' : `${user.firstName} ${user.lastName}`}
+                </Typography>
+                <Typography
+                  component="h4"
+                  variant="h4"
+                  color="text.primary"
+                >
+                  Software Engineering
+                </Typography>
+                <Link style={{ textDecoration: "none" }} href='/survey'>
+                  <Button variant="contained" color="primary" sx={{ display: 'block', width: "320px" }}>Complete a survey about yourself</Button>
+                </Link>
+              </Stack>
             </Stack>
-          </Stack>
-          <NoOfSubmissions/>
+            <NoOfSubmissions />
+          </Box>
+          <Container sx={{ py: 8 }} maxWidth="lg">
+            <ProfileClassesTable />
+            {/* End hero unit */}
+          </Container>
+        </main>
+        {/* Footer */}
+        <Box sx={{ p: 6 }} component="footer">
+          <Typography variant="h6" align="center" gutterBottom>
+            Wattendance
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="text.secondary"
+            component="p"
+          >
+            Track your attendance
+          </Typography>
+          <Copyright />
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="lg">
-          <ProfileClassesTable />
-          {/* End hero unit */}
-        </Container>
-      </main>
-      {/* Footer */}
-      <Box sx={{ p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Wattendance
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Track your attendance
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
-    </ThemeProvider>
+        {/* End footer */}
+      </ThemeProvider>
     </>
   );
 }
