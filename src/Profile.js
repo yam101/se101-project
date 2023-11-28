@@ -14,6 +14,8 @@ import { Avatar } from '@mui/material';
 import UserContext from './UserContext';
 import ProfileClassesTable from './ProfileClassesTable';
 import cover from "./images/background.png";
+import Button from '@mui/material/Button';
+
 
 
 const font = "'Poppins', sans-serif";
@@ -25,7 +27,7 @@ const theme = createTheme({
   palette: {
       primary: {
           main: "#000000"
-      }
+      },
   },
 });
 
@@ -97,11 +99,10 @@ export default function Album() {
         {/* Hero unit */}
         <Box
           sx={{
-            pt: 8,
+            pt: 16,
             pb: 6,
             horizontalAlign: 'middle',
             // verticalAlignalign: 'middle',
-            marginTop: 8,
             marginLeft: 5,
             marginRight: 5,
             marginBottom: 0,
@@ -126,6 +127,7 @@ export default function Album() {
               direction="column"
               justifyContent="center"
               align="left"
+              spacing = {1}
             >
               <Typography
                 component="h4"
@@ -142,6 +144,9 @@ export default function Album() {
               >
                 Software Engineering
               </Typography>
+              <Link style={{ textDecoration: "none" }} href='/survey'>
+                  <Button variant="contained" color="primary" sx={{ display: 'block', width: "400px" }}>Complete a survey about yourself</Button>
+              </Link>
             </Stack>
           </Stack>
           <NoOfSubmissions/>
