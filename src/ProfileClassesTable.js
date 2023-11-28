@@ -8,41 +8,42 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
-// unfinished table!!!
+const attendance115 = 0;
+const attendance105 = 0;
+
 const columns = [
     { id: 'course', label: 'Course', minWidth: 170 },
     { id: 'code', label: 'Course Code', minWidth: 100 },
     {
-      id: 'population',
-      label: 'Population',
+      id: 'attendance',
+      label: 'Attendance',
       minWidth: 170,
       align: 'right',
-      format: (value) => value.toLocaleString('en-US'),
+      // format: (value) => value.toLocaleString('en-US'),
     },
-    {
-      id: 'size',
-      label: 'Size\u00a0(km\u00b2)',
-      minWidth: 170,
-      align: 'right',
-      format: (value) => value.toLocaleString('en-US'),
-    },
-    {
-      id: 'density',
-      label: 'Density',
-      minWidth: 170,
-      align: 'right',
-      format: (value) => value.toFixed(2),
-    },
+    // {
+    //   id: 'size',
+    //   label: 'Size\u00a0(km\u00b2)',
+    //   minWidth: 170,
+    //   align: 'right',
+    //   format: (value) => value.toLocaleString('en-US'),
+    // },
+    // {
+    //   id: 'density',
+    //   label: 'Density',
+    //   minWidth: 170,
+    //   align: 'right',
+    //   format: (value) => value.toFixed(2),
+    // },
   ];
   
-  function createData(course, code, population, size) {
-    const density = population / size;
-    return { course, code, population, size, density };
+  function createData(course, code, attendance) {
+    return { course, code, attendance};
   }
   
   const rows = [
-    createData('India', 'IN', 1324171354, 3287263),
-    createData('China', 'CN', 1403500365, 9596961),
+    createData('Linear Algebra', 'MATH115', attendance115),
+    createData('Physics 1', 'ECE105', attendance105),
     // createData('Italy', 'IT', 60483973, 301340),
     // createData('United States', 'US', 327167434, 9833520),
     // createData('Canada', 'CA', 37602103, 9984670),
