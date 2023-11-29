@@ -82,7 +82,7 @@ function Survey() {
             <Stack spacing={2} direction="column" sx={{ pr:'200px', pl:'200px' }} alignItems="center">
 
             <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
+                <div className='spacer'></div>
                 <Typography variant="h6" gutterBottom>
                 On a scale of 1 - 10, how often do you attend lectures for this class?
 
@@ -92,7 +92,7 @@ function Survey() {
 
 
             <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
+                <div className='spacer'></div>
                 <Typography variant="h6" gutterBottom>
                 On a scale of 1 - 10, do you think these lectures have made a positive contribution to your academic success?
 
@@ -101,7 +101,7 @@ function Survey() {
             <Slider name='q2' onChange={handleSliderChange}/>
             
             <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
+                <div className='spacer'></div>
                 <Typography variant="h6" gutterBottom>
                 On a scale of 1 - 10, how would you rate the overall importance of attending lectures in your academic journey?
 
@@ -112,7 +112,7 @@ function Survey() {
 
 
             <Box sx={{ zIndex: '2' }}>
-                <div class='spacer'></div>
+                <div className='spacer'></div>
                 <Typography variant="h6" gutterBottom>
                 On a scale of 1 to 10, to what extent do you believe that missing lectures has negatively impacted your academic performance?
 
