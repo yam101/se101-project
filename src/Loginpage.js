@@ -49,6 +49,7 @@ export default function SignIn(props) {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    console.log("ok");
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -63,9 +64,11 @@ export default function SignIn(props) {
         password: data.get('password'),
       }),
     }
-    const response = await fetch('http://18.223.107.181:3600/login', options);
+    const response = await fetch('http://localhost:3600/login', options);
+    
+    //const response = await fetch('http://18.223.107.181:3600/login', options);
     const result = await response.json();
-
+    console.log("ok1");
     if (result.status === 'successful') {
       //setUser();
       props.login(result.user);
