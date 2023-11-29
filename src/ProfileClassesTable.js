@@ -38,10 +38,12 @@ const columns = [
     return {course, code, attendance};
   }
   
+  const rows = [];
+
   const getCourse= async(courseID)=>{
     const options = {
       mode: 'cors',
-      method: 'GET',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -49,24 +51,18 @@ const columns = [
         'courseID': courseID
       }),
     }
-    const response = await fetch('http://18.223.107.181:3600/login', options);
+    const response = await fetch('http://localhost:3600/get-course-attendance', options);
+    //const response = await fetch('http://18.223.107.181:3600/get-course-attendance', options);
     const result = await response.json();
+    console.log(result);
+    rows.push(result);
   }
   
-  const rows = [
-    // Unsure how data is going to be imported: 
-    // make them as a list, the createData function is going to be unnecessary.
-    // createData('Linear Algebra', 'MATH115', 0),
-    // createData('Physics 1', 'ECE105', 0),
-    {course: 'Linear Algebra', code: 'MATH115', attendance: 0},
-    {course: 'Classical Mechanics', code: 'ECE105', attendance: 0},
-    // I'm confused ahaha
-  ];
 
   for (let i = 1; i < 7; i++){
-    rows.push(getCourse(i));
+    getCourse(i);
   }
-  
+
 function ProfileClassesTable(){
     const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
