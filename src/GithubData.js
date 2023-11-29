@@ -1,18 +1,3 @@
-const getAttendance= async(userID)=>{
-    const options = {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        'courseID': courseID
-      }),
-    }
-    const response = await fetch('http://18.223.107.181:3600/login', options);
-    const result = await response.json();
-  }
-
 export const githubdata = [
     2,
     2,

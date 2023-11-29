@@ -167,21 +167,7 @@ export default function SignUp(props) {
               </Grid>
             </Box>
           </Box>
-          {/* footer */}
-          <Box sx={{ mt: 2, p: 6 }} component="footer">
-          <Typography variant="h6" align="center" gutterBottom>
-            Wattendance
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="text.secondary"
-            component="p"
-          >
-            Track your attendance
-          </Typography>
-          <Copyright />
-        </Box>
+          <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
     </>

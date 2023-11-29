@@ -30,25 +30,25 @@ export default function Types() {
             </div >
             <ThemeProvider theme={theme}>
                 <Stack direction="column" align="center" spacing={4} sx={{ pt: "20%", fontFamily: 'Poppins' }}>
-                <Typography variant="h3" gutterBottom >
-                    Welcome to <br /> Wattendance
-                </Typography>
+                    <Typography variant="h3" gutterBottom >
+                        Welcome to <br /> Wattendance
+                    </Typography>
 
-                <Link style={{ textDecoration: "none" }} to={`/signup`}>
-                    <Button variant="contained" color="primary" sx={{ display: 'block', width: "200px" }}>Sign Up</Button>
-                </Link>
+                    <Link style={{ textDecoration: "none" }} to={`/signup`}>
+                        <Button variant="contained" color="primary" sx={{ display: 'block', width: "200px" }}>Sign Up</Button>
+                    </Link>
 
-                <Typography variant="body1" gutterBottom >
-                    Track your attendance easily all over University of Waterloo.
-                </Typography>
+                    <Typography variant="body1" gutterBottom >
+                        Track your attendance easily from University of Waterloo.
+                    </Typography>
 
                 </Stack>
-                
+
             </ThemeProvider>
 
 
         </>
-        
+
 
 
 
