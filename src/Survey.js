@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
+import UserContext from './UserContext.js';
 
 const font = "'Poppins', sans-serif";
 
@@ -25,6 +26,32 @@ const theme = createTheme({
 
 
 function Survey() {
+    const user = React.useContext(UserContext).value;
+    const userID = user.id;
+    
+    const [courses, setCourses] = React.useState([]);
+    const [dataFetched, setDataFetched] = React.useState(false);
+
+    const getCourses = async() => {
+        const options = {
+            mode: 'cors',
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/JSON' },
+            body: JSON.stringify({
+                'userID': userID,
+            })
+        }
+        const response = await fetch('http://localhost:3600/get-enrolled-courses', options);
+        const result = await response.json();
+        console.log(result);
+        setCourses(result); 
+        setDataFetched(true);
+    }
+
+    React.useEffect(() => {
+        getCourses(); // Fetch attendance on component mount
+      }, []);
+
     const [sliderValues, setSliderValues] = useState({
         q1: 1,
         q2: 1,
@@ -45,14 +72,15 @@ function Survey() {
             method: 'POST',
             headers: { 'Content-Type': 'application/JSON' },
             body: JSON.stringify({
-                q1: sliderValues['q1'],
-                q2: sliderValues['q2'],
-                q3: sliderValues['q3'],
-                q4: sliderValues['q4'],
+                'userID': userID,
+                'q1': sliderValues['q1'],
+                'q2': sliderValues['q2'],
+                'q3': sliderValues['q3'],
+                'q4': sliderValues['q4'],
 
             })
         }
-        const response = await fetch('http://localhost:3600/survey', options);
+        const response = await fetch('http://localhost:3600/set-survey-result', options);
         const result = await response.json();
         console.log(result);
     };
