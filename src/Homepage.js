@@ -70,17 +70,17 @@ function Homepage() {
         { x: 150, y: 400, id: 5 },
         { x: 110, y: 280, id: 6 },
     ];
-    
-    const getCourseData= async(courseID, setDataX)=>{
+
+    const getCourseData = async (courseID, setDataX) => {
         const options = {
-          mode: 'cors',
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'courseID': courseID,
-          }),
+            mode: 'cors',
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'courseID': courseID,
+            }),
         }
         const response = await fetch('http://localhost:3600/get-scatter-points', options);
         //const response = await fetch('http://18.223.107.181:3600/get-course-attendance', options);
@@ -89,9 +89,9 @@ function Homepage() {
         console.log(result);
         setDataX(result);
         //await setDataX(result.map(item => ({x: item.attendance, y: item.surveyAvg, id: id++})));
-      }
+    }
 
-    const getAllData = async()=> {
+    const getAllData = async () => {
         await getCourseData(1, setData1);
         await getCourseData(2, setData2);
         await getCourseData(3, setData3);
@@ -99,12 +99,12 @@ function Homepage() {
         await getCourseData(5, setData5);
         await getCourseData(6, setData6);
         console.log(data1);
-    }  
+    }
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         getAllData();
         setDataFetched(true);
-    },[])
+    }, [])
 
 
     return (
@@ -128,19 +128,19 @@ function Homepage() {
 
                     <Card sx={{ width: '850px' }}>
                         <ScatterChart
-                            series={dataFetched? [
-                                { type: 'scatter', label: 'ECE 105', data: data1},
-                                { type: 'scatter', label: 'MATH 115', data: data2},
-                                { type: 'scatter', label: 'CS 137', data: data3},
-                                { type: 'scatter', label: 'MATH 117', data: data4},
-                                { type: 'scatter', label: 'MATH 135', data: data5},
-                                { type: 'scatter', label: 'SE 101', data: data6}]
+                            series={dataFetched ? [
+                                { type: 'scatter', label: 'ECE 105', data: data1 },
+                                { type: 'scatter', label: 'MATH 115', data: data2 },
+                                { type: 'scatter', label: 'CS 137', data: data3 },
+                                { type: 'scatter', label: 'MATH 117', data: data4 },
+                                { type: 'scatter', label: 'MATH 135', data: data5 },
+                                { type: 'scatter', label: 'SE 101', data: data6 }]
                                 : []
                             }
                             width={800}
                             height={600}
                             xAxis={[{ id: 'attendance', label: 'Attendance', }]}
-                            yAxis={[{ id: 'survey', label: 'Average survey data', min: 1, max: 10 }]}
+                            yAxis={[{ id: 'survey', label: 'Average survey data', min: 0, max: 10 }]}
                             colors={cheerfulFiestaPalette}
                             sx={{
                                 [`.${axisClasses.left} .${axisClasses.label}`]: {
