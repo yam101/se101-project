@@ -55,7 +55,7 @@ function Survey() {
       }, []);
 
     const menuItems = courses.map(course => (
-        <MenuItem key={course.courseCode} value={course.courseCode}>
+        <MenuItem key={course.idcourses} value={course.idcourses}>
             {`${course.courseCode} (${course.courseName})`}
         </MenuItem>
     ));
