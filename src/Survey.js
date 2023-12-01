@@ -8,10 +8,7 @@ import Slider from './Slider';
 import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import Card from '@mui/material/Card';
 
 import UserContext from './UserContext.js';
 
@@ -33,7 +30,7 @@ function Survey() {
     const user = React.useContext(UserContext).value;
     const userID = user.id;
     
-    const [courses, setCourses] = React.useState([{courseName:"test", courseCode:"test"}]);
+    const [courses, setCourses] = React.useState([]);
     const [dataFetched, setDataFetched] = React.useState(false);
 
     const getCourses = async() => {
@@ -78,7 +75,6 @@ function Survey() {
     };
     const handleSubmit = async () => {
         console.log(sliderValues);
-        console.log(course);
 
         const options = {
             mode: 'cors',
@@ -99,11 +95,6 @@ function Survey() {
         console.log(result);
     };
 
-    const [course, setCourse] = React.useState('');
-
-    const handleChange = (event) => {
-        setCourse(event.target.value);
-    };
 
     return (
         <>
@@ -116,7 +107,6 @@ function Survey() {
 
             <ThemeProvider theme={theme}>
                 <Stack spacing={2} direction="column" sx={{ pr: '250px', pl: '250px', pt: '100px' }} alignItems="center">
-
                     <Typography variant="h4" gutterBottom>
                         Academic Survey
                     </Typography>
