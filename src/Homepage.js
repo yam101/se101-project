@@ -15,6 +15,11 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import { cheerfulFiestaPalette } from '@mui/x-charts/colorPalettes';
+import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
+import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+
 
 
 const font = "'Poppins', sans-serif";
@@ -121,7 +126,7 @@ function Homepage() {
                     </Box>
                     <br></br>
 
-                    <Card>
+                    <Card sx={{ width: '850px' }}>
                         <ScatterChart
                             series={dataFetched? [
                                 { type: 'scatter', label: 'ECE 105', data: data1},
@@ -134,6 +139,17 @@ function Homepage() {
                             }
                             width={800}
                             height={600}
+                            xAxis={[{ id: 'attendance', label: 'Attendance', }]}
+                            yAxis={[{ id: 'survey', label: 'Average survey data' }]}
+                            colors={cheerfulFiestaPalette}
+                            sx={{
+                                [`.${axisClasses.left} .${axisClasses.label}`]: {
+                                    transform: 'translate(-10px, 0)',
+                                },
+                                pl: '70px',
+                            }}
+
+
                         />
                     </Card>
 
