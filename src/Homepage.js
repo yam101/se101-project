@@ -102,7 +102,7 @@ function Homepage() {
                             width={800}
                             height={600}
                             xAxis={[{ id: 'attendance', label: 'Attendance', }]}
-                            yAxis={[{ id: 'survey', label: 'Average survey data' }]}
+                            yAxis={[{ id: 'survey', label: 'Average survey data', min: 1, max: 10 }]}
                             colors={cheerfulFiestaPalette}
                             sx={{
                                 [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -110,8 +110,6 @@ function Homepage() {
                                 },
                                 pl: '70px',
                             }}
-
-
                         />
                     </Card>
 
