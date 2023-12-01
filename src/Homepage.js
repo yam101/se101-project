@@ -11,6 +11,10 @@ import Button from '@mui/material/Button';
 import { ScatterChart } from "@mui/x-charts/ScatterChart";
 import Card from '@mui/material/Card';
 import Link from '@mui/material/Link';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
 
 const font = "'Poppins', sans-serif";
@@ -22,6 +26,14 @@ const data = [
     { x: 140, y: 250, id: 4 },
     { x: 150, y: 400, id: 5 },
     { x: 110, y: 280, id: 6 },
+];
+const data2 = [
+    { x: 110, y: 200, id: 1 },
+    { x: 130, y: 100, id: 2 },
+    { x: 140, y: 300, id: 3 },
+    { x: 180, y: 250, id: 4 },
+    { x: 190, y: 400, id: 5 },
+    { x: 200, y: 280, id: 6 },
 ];
 
 const theme = createTheme({
@@ -52,6 +64,12 @@ function Copyright() {
 
 function Homepage() {
 
+    const [course, setCourse] = React.useState('');
+
+    const handleChange = (event) => {
+        setCourse(event.target.value);
+    };
+
     return (
         <>
             <div style={{
@@ -74,8 +92,13 @@ function Homepage() {
                     <Card>
                         <ScatterChart
                             series={[
-                                { type: 'scatter', label: 'Var A', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'Var B', data: data.slice(25) },
+                                { type: 'scatter', label: 'ECE 105', data: data.slice(0, 25) },
+                                { type: 'scatter', label: 'MATH 115', data: data2.slice(0, 25) },
+                                { type: 'scatter', label: 'CS 137', data: data.slice(0, 25) },
+                                { type: 'scatter', label: 'MATH 117', data: data.slice(0, 25) },
+                                { type: 'scatter', label: 'MATH 135', data: data.slice(0, 25) },
+                                { type: 'scatter', label: 'SE 101', data: data.slice(0, 25) },
+
                             ]}
                             width={800}
                             height={600}
