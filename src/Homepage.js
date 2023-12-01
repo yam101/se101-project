@@ -19,22 +19,7 @@ import FormControl from '@mui/material/FormControl';
 
 const font = "'Poppins', sans-serif";
 
-const data = [
-    { x: 100, y: 200, id: 1 },
-    { x: 120, y: 100, id: 2 },
-    { x: 170, y: 300, id: 3 },
-    { x: 140, y: 250, id: 4 },
-    { x: 150, y: 400, id: 5 },
-    { x: 110, y: 280, id: 6 },
-];
-const data2 = [
-    { x: 110, y: 200, id: 1 },
-    { x: 130, y: 100, id: 2 },
-    { x: 140, y: 300, id: 3 },
-    { x: 180, y: 250, id: 4 },
-    { x: 190, y: 400, id: 5 },
-    { x: 200, y: 280, id: 6 },
-];
+
 
 const theme = createTheme({
     typography: {
@@ -64,11 +49,58 @@ function Copyright() {
 
 function Homepage() {
 
-    const [course, setCourse] = React.useState('');
+    const [data1, setData1] = React.useState([]);
+    const [data2, setData2] = React.useState([]);
+    const [data3, setData3] = React.useState([]);
+    const [data4, setData4] = React.useState([]);
+    const [data5, setData5] = React.useState([]);
+    const [data6, setData6] = React.useState([]);
+    const [dataFetched, setDataFetched] = React.useState(false);
 
-    const handleChange = (event) => {
-        setCourse(event.target.value);
-    };
+    const data = [
+        { x: 100, y: 200, id: 1 },
+        { x: 120, y: 100, id: 2 },
+        { x: 170, y: 300, id: 3 },
+        { x: 140, y: 250, id: 4 },
+        { x: 150, y: 400, id: 5 },
+        { x: 110, y: 280, id: 6 },
+    ];
+    
+    const getCourseData= async(courseID, setDataX)=>{
+        const options = {
+          mode: 'cors',
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'courseID': courseID,
+          }),
+        }
+        const response = await fetch('http://localhost:3600/get-scatter-points', options);
+        //const response = await fetch('http://18.223.107.181:3600/get-course-attendance', options);
+        const result = await response.json();
+        let id = 1;
+        console.log(result);
+        setDataX(result);
+        //await setDataX(result.map(item => ({x: item.attendance, y: item.surveyAvg, id: id++})));
+      }
+
+    const getAllData = async()=> {
+        await getCourseData(1, setData1);
+        await getCourseData(2, setData2);
+        await getCourseData(3, setData3);
+        await getCourseData(4, setData4);
+        await getCourseData(5, setData5);
+        await getCourseData(6, setData6);
+        console.log(data1);
+    }  
+
+    React.useEffect(()=>{
+        getAllData();
+        setDataFetched(true);
+    },[])
+
 
     return (
         <>
@@ -91,15 +123,15 @@ function Homepage() {
 
                     <Card>
                         <ScatterChart
-                            series={[
-                                { type: 'scatter', label: 'ECE 105', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 115', data: data2.slice(0, 25) },
-                                { type: 'scatter', label: 'CS 137', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 117', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 135', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'SE 101', data: data.slice(0, 25) },
-
-                            ]}
+                            series={dataFetched? [
+                                { type: 'scatter', label: 'ECE 105', data: data1},
+                                { type: 'scatter', label: 'MATH 115', data: data2},
+                                { type: 'scatter', label: 'CS 137', data: data3},
+                                { type: 'scatter', label: 'MATH 117', data: data4},
+                                { type: 'scatter', label: 'MATH 135', data: data5},
+                                { type: 'scatter', label: 'SE 101', data: data6}]
+                                : []
+                            }
                             width={800}
                             height={600}
                         />
