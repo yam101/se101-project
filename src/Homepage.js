@@ -15,6 +15,11 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import { cheerfulFiestaPalette } from '@mui/x-charts/colorPalettes';
+import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
+import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+
 
 
 const font = "'Poppins', sans-serif";
@@ -64,12 +69,6 @@ function Copyright() {
 
 function Homepage() {
 
-    const [course, setCourse] = React.useState('');
-
-    const handleChange = (event) => {
-        setCourse(event.target.value);
-    };
-
     return (
         <>
             <div style={{
@@ -89,19 +88,30 @@ function Homepage() {
                     </Box>
                     <br></br>
 
-                    <Card>
+                    <Card sx={{ width: '850px' }}>
                         <ScatterChart
                             series={[
-                                { type: 'scatter', label: 'ECE 105', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 115', data: data2.slice(0, 25) },
-                                { type: 'scatter', label: 'CS 137', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 117', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'MATH 135', data: data.slice(0, 25) },
-                                { type: 'scatter', label: 'SE 101', data: data.slice(0, 25) },
+                                { type: 'scatter', label: 'ECE 105', data: data.slice(0, 25), },
+                                { type: 'scatter', label: 'MATH 115', data: data2.slice(0, 25), },
+                                { type: 'scatter', label: 'CS 137', data: data.slice(0, 25), },
+                                { type: 'scatter', label: 'MATH 117', data: data.slice(0, 25), },
+                                { type: 'scatter', label: 'MATH 135', data: data.slice(0, 25), },
+                                { type: 'scatter', label: 'SE 101', data: data.slice(0, 25), },
 
                             ]}
                             width={800}
                             height={600}
+                            xAxis={[{ id: 'attendance', label: 'Attendance', }]}
+                            yAxis={[{ id: 'survey', label: 'Average survey data' }]}
+                            colors={cheerfulFiestaPalette}
+                            sx={{
+                                [`.${axisClasses.left} .${axisClasses.label}`]: {
+                                    transform: 'translate(-10px, 0)',
+                                },
+                                pl: '70px',
+                            }}
+
+
                         />
                     </Card>
 
