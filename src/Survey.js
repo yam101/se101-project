@@ -7,9 +7,11 @@ import Slider from './Slider';
 import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 
-import UserContext from './UserContext.js';
 
 const font = "'Poppins', sans-serif";
 
@@ -26,32 +28,6 @@ const theme = createTheme({
 
 
 function Survey() {
-    const user = React.useContext(UserContext).value;
-    const userID = user.id;
-    
-    const [courses, setCourses] = React.useState([]);
-    const [dataFetched, setDataFetched] = React.useState(false);
-
-    const getCourses = async() => {
-        const options = {
-            mode: 'cors',
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/JSON' },
-            body: JSON.stringify({
-                'userID': userID,
-            })
-        }
-        const response = await fetch('http://localhost:3600/get-enrolled-courses', options);
-        const result = await response.json();
-        console.log(result);
-        setCourses(result); 
-        setDataFetched(true);
-    }
-
-    React.useEffect(() => {
-        getCourses(); // Fetch attendance on component mount
-      }, []);
-
     const [sliderValues, setSliderValues] = useState({
         q1: 1,
         q2: 1,
@@ -66,25 +42,31 @@ function Survey() {
     };
     const handleSubmit = async () => {
         console.log(sliderValues);
+        console.log(course);
 
         const options = {
             mode: 'cors',
             method: 'POST',
             headers: { 'Content-Type': 'application/JSON' },
             body: JSON.stringify({
-                'userID': userID,
-                'q1': sliderValues['q1'],
-                'q2': sliderValues['q2'],
-                'q3': sliderValues['q3'],
-                'q4': sliderValues['q4'],
+                courseID: course,
+                q1: sliderValues['q1'],
+                q2: sliderValues['q2'],
+                q3: sliderValues['q3'],
+                q4: sliderValues['q4'],
 
             })
         }
-        const response = await fetch('http://localhost:3600/set-survey-result', options);
+        const response = await fetch('http://localhost:3600/survey', options);
         const result = await response.json();
         console.log(result);
     };
 
+    const [course, setCourse] = React.useState('');
+
+    const handleChange = (event) => {
+        setCourse(event.target.value);
+    };
 
     return (
         <>
@@ -97,9 +79,30 @@ function Survey() {
 
             <ThemeProvider theme={theme}>
                 <Stack spacing={2} direction="column" sx={{ pr: '250px', pl: '250px', pt: '100px' }} alignItems="center">
+
                     <Typography variant="h4" gutterBottom>
                         Academic Survey
                     </Typography>
+                    <FormControl>
+                        <InputLabel id="course">Course</InputLabel>
+                        <Select
+                            labelId="course"
+                            id="select"
+                            value={course}
+                            label="Course"
+                            onChange={handleChange}
+                            sx={{ minWidth: '150px' }}
+
+                        >
+                            <MenuItem value={1}>ECE 105</MenuItem>
+                            <MenuItem value={2}>MATH 115</MenuItem>
+                            <MenuItem value={3}>CS 137</MenuItem>
+                            <MenuItem value={4}>MATH 117</MenuItem>
+                            <MenuItem value={5}>MATH 135</MenuItem>
+                            <MenuItem value={6}>SE 101</MenuItem>
+
+                        </Select>
+                    </FormControl>
                     <Box >
                         <Typography variant="h6" gutterBottom>
                             On a scale of 1 - 10, how often do you attend lectures for this class?
