@@ -139,7 +139,7 @@ function Homepage() {
                             }
                             width={800}
                             height={600}
-                            xAxis={[{ id: 'attendance', label: 'Attendance', }]}
+                            xAxis={[{ id: 'attendance', label: 'Attendance', min: 0 }]}
                             yAxis={[{ id: 'survey', label: 'Average survey data', min: 0, max: 10 }]}
                             colors={cheerfulFiestaPalette}
                             sx={{
