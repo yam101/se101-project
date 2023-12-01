@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -48,10 +49,18 @@ function Survey() {
         setDataFetched(true);
     }
 
+    
     React.useEffect(() => {
-        getCourses(); // Fetch attendance on component mount
+        getCourses(); 
       }, []);
 
+    const menuItems = courses.map(course => (
+        <MenuItem key={course.courseCode} value={course.courseCode}>
+            {`${course.courseCode} (${course.courseName})`}
+        </MenuItem>
+    ));
+    
+      
     const [sliderValues, setSliderValues] = useState({
         q1: 1,
         q2: 1,
@@ -72,6 +81,7 @@ function Survey() {
             method: 'POST',
             headers: { 'Content-Type': 'application/JSON' },
             body: JSON.stringify({
+                'courseID': course,
                 'userID': userID,
                 'q1': sliderValues['q1'],
                 'q2': sliderValues['q2'],
@@ -100,6 +110,21 @@ function Survey() {
                     <Typography variant="h4" gutterBottom>
                         Academic Survey
                     </Typography>
+                    <FormControl>
+                        <InputLabel id="course">Course</InputLabel>
+                        <Select
+                            labelId="course"
+                            id="select"
+                            value={course}
+                            label="Course"
+                            onChange={handleChange}
+                            sx={{ minWidth: '150px' }}
+
+                        >
+                            {dataFetched ? menuItems : menuItems}
+
+                        </Select>
+                    </FormControl>
                     <Box >
                         <Typography variant="h6" gutterBottom>
                             On a scale of 1 - 10, how often do you attend lectures for this class?
@@ -134,8 +159,9 @@ function Survey() {
 
                     <br></br>
                     <br></br>
+                    <Link to='/profile'>
                     <Button variant="contained" color="primary" onClick={handleSubmit}
-                        sx={{ ml: '60px', display: 'block', width: "200px" }}>Submit</Button>
+                        sx={{ ml: '60px', display: 'block', width: "200px" }}>Submit</Button></Link>
                     <br></br>
                     <br></br>
                     <br></br>
