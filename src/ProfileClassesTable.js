@@ -48,8 +48,8 @@ function ProfileClassesTable(){
         'userID': userID
       }),
     }
-    const response = await fetch('http://localhost:3600/get-user-course-attendance', options);
-    //const response = await fetch('http://18.223.107.181:3600/get-course-attendance', options);
+    //const response = await fetch('http://localhost:3600/get-user-course-attendance', options);
+    const response = await fetch('http://18.223.107.181:3600/get-user-course-attendance', options);
     const result = await response.json();
     return result;
   }

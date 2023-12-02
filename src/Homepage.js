@@ -82,8 +82,8 @@ function Homepage() {
                 'courseID': courseID,
             }),
         }
-        const response = await fetch('http://localhost:3600/get-scatter-points', options);
-        //const response = await fetch('http://18.223.107.181:3600/get-course-attendance', options);
+        //const response = await fetch('http://localhost:3600/get-scatter-points', options);
+        const response = await fetch('http://18.223.107.181:3600/get-scatter-points', options);
         const result = await response.json();
         let id = 1;
         console.log(result);
