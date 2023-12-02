@@ -63,8 +63,8 @@ export default function SignUp(props) {
         lastName: data.get('lastName')
       })
     }
-    const response = await fetch('http://localhost:3600/signup', options);
-    //const response = await fetch('http://18.223.107.181:3600/signup', options);
+    // const response = await fetch('http://localhost:3600/signup', options);
+    const response = await fetch('http://18.223.107.181:3600/signup', options);
     const result = await response.json();
     console.log(result);
 

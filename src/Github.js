@@ -26,7 +26,8 @@ function Heatmap() {
         'userID': userID,
       }),
     }
-    const response = await fetch('http://localhost:3600/get-attendance-batched', options);
+    //const response = await fetch('http://localhost:3600/get-attendance-batched', options);
+    const response = await fetch('http://18.223.107.181:3600/get-attendance-batched', options);
     const result = await response.json();
     setAttendance(result); 
     setDataFetched(true);

@@ -45,7 +45,8 @@ function Survey() {
                 'userID': userID,
             })
         }
-        const response = await fetch('http://localhost:3600/get-enrolled-courses', options);
+        // const response = await fetch('http://localhost:3600/get-enrolled-courses', options);
+        const response = await fetch('http://18.223.107.181:3600/get-enrolled-courses', options);
         const result = await response.json();
         console.log(result);
         setCourses(result); 
@@ -94,7 +95,8 @@ function Survey() {
 
             })
         }
-        const response = await fetch('http://localhost:3600/set-survey-result', options);
+        // const response = await fetch('http://localhost:3600/set-survey-result', options);
+        const response = await fetch('http://18.223.107.181:3600/set-survey-result', options);
         const result = await response.json();
         console.log(result);
     };
