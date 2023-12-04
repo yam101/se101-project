@@ -148,7 +148,7 @@ export default function SignUp(props) {
                 <Grid item xs={12}>
                   <FormControlLabel
                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                    label="I consent to the use of my identity by Wattendance."
+                    label="I consent to the use of my photos and attendance data by Wattendance."
                   />
                 </Grid>
               </Grid>
