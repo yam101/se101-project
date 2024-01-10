@@ -1,4 +1,7 @@
 # Wattendance 
+
+[Live Demo 🔗](http://wattendance.s3-website.us-east-2.amazonaws.com/)
+
 <img width="1338" alt="Screenshot 2024-01-02 at 8 38 06 PM" src="https://github.com/yam101/wattendance/assets/140665247/55b81b88-45d5-4573-9132-04ded8d1bee8">
 
 ## Development 🛠️
